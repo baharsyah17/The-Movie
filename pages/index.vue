@@ -1,7 +1,9 @@
 <template>
   <div class="bg-black">
     <div class="px-20 py-10">
-      <h1 class="text-center text-3xl font-bold text-white">Now on Cinema</h1>
+      <h1 class="text-center text-3xl font-bold text-white mb-10">
+        Now on Cinema
+      </h1>
       <div class="grid grid-cols-4 gap-10">
         <Movie
           v-for="(movie, id) in results"
@@ -41,7 +43,6 @@ export default {
         .catch((err) => console.log(err));
     },
     toPageDetail(movie) {
-      console.log("haiii");
       this.$router.push(`/${movie.title}?id=${movie.id}`);
     },
   },

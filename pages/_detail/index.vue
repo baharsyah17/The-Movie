@@ -1,16 +1,57 @@
 <template>
-  <div>
-    <div>
-      <img
-        :src="`http://image.tmdb.org/t/p/w500${poster_path}`"
-        alt="image not found"
-      />
-      <h1>{{ title }}</h1>
-      <p>Release Date: {{ release_date }}</p>
-      <!-- <p v-for="(name, id) in genre" :key="id">Genre: {{ genre.name }}</p> -->
-      <p>Run Time: {{ runtime }}</p>
-      <p>{{ overview }}</p>
-      <!-- <p>{{ production_companies.name }}</p> -->
+  <div class="w-screen place-items-center p-20">
+    <nuxt-link
+      to="/"
+      class="bg-indigo-400 text-white text-center rounded-lg px-16 py-3 cursor-pointer"
+      >Back</nuxt-link
+    >
+    <div class="grid grid-cols-2 gap-0">
+      <div class="mt-20 ml-80">
+        <img
+          :src="`http://image.tmdb.org/t/p/w500${results.poster_path}`"
+          alt="image not found"
+          class="rounded-lg"
+        />
+      </div>
+      <div class="mt-20 mr-40">
+        <h1 class="font-bold text-6xl">{{ results.title }}</h1>
+        <p class="mt-10 text-xl">
+          Release Date: <strong> {{ results.release_date }} </strong>
+        </p>
+        <div>
+          <p class="text-xl">
+            Genre:
+            <strong>
+              <span v-for="jenis in tipe.genres" :key="jenis">
+                {{ jenis.name }},</span
+              >-</strong
+            >
+          </p>
+        </div>
+        <p class="text-xl">
+          Run Time: <strong> {{ results.runtime }}m </strong>
+        </p>
+        <p class="mt-10 text-xl mb-15">{{ results.overview }}</p>
+        <div class="mt-10 mb-10 border-4 h-0"></div>
+        <p class="mt-15 text-xl mb-15">
+          Production Studio:
+          <br />
+          <strong>
+            <span v-for="company in tipe.production_companies" :key="company">
+              {{ company.name }},</span
+            >-</strong
+          >
+        </p>
+        <p class="mt-10 text-xl mb-15">
+          Stars:
+          <br />
+          <strong>
+            <span v-for="star in credit" :key="star"> {{ star.name }},</span
+            >-</strong
+          >
+        </p>
+        <div class="mt-10 border-4 h-0"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,18 +61,17 @@ import axios from "axios";
 export default {
   data() {
     return {
+      results: {},
+      tipe: {},
+      credit: {},
       movieId: "",
       param: "",
-      poster_path: "",
-      title: "",
-      release_date: "",
-      name: "",
-      overview: "",
     };
   },
   mounted() {
     this.getDataDetailMovieTV();
-    this.getParam();
+    this.getDataGenreMovieTV();
+    this.getDataCreditsMovieTV();
   },
   methods: {
     getDataDetailMovieTV() {
@@ -40,8 +80,28 @@ export default {
       axios
         .get(api)
         .then((res) => {
-          this.results = res.data.results;
+          this.results = res.data;
           console.log(this.results);
+        })
+        .catch((err) => console.log(err));
+    },
+    getDataGenreMovieTV() {
+      var api2 = `https://api.themoviedb.org/3/movie/${this.movieId}?api_key=6de3c0f0176c22fabe34c6be66fa8cae`;
+      axios
+        .get(api2)
+        .then((res) => {
+          this.tipe = res.data;
+          console.log(this.tipe);
+        })
+        .catch((err) => console.log(err));
+    },
+    getDataCreditsMovieTV() {
+      var api3 = `https://api.themoviedb.org/3/movie/${this.movieId}/credits?api_key=6de3c0f0176c22fabe34c6be66fa8cae`;
+      axios
+        .get(api3)
+        .then((res) => {
+          this.credit = res.data.cast.splice(0, 10);
+          console.log(this.credit);
         })
         .catch((err) => console.log(err));
     },
@@ -49,11 +109,6 @@ export default {
       console.log(this.$route);
       this.param = this.$route.params.detail;
       this.movieId = this.$route.query.id;
-      // this.poster_path = this.$route.query.poster_path;
-      // this.title = this.$route.query.title;
-      // this.release_date = this.$route.query.release_date;
-      // this.name = this.$route.query.name;
-      // this.overview = this.$route.query.overview;
     },
   },
 };
