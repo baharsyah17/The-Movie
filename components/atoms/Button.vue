@@ -1,5 +1,10 @@
 <template>
-  <div class="d-block btn btn-light mt-3 mb-3">More</div>
+  <div
+    class="bg-white w-40 px-40 py-5 rounded-lg cursor-pointer"
+    @click="$emit('click')"
+  >
+    More
+  </div>
 </template>
 
 <script>
