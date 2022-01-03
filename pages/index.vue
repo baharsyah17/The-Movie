@@ -43,7 +43,7 @@ export default {
         .catch((err) => console.log(err));
     },
     toPageDetail(movie) {
-      this.$router.push(`/${movie.title}?id=${movie.id}`);
+      this.$router.push(`/detail?id=${movie.id}`);
     },
   },
 };
