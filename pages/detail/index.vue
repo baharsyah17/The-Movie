@@ -6,7 +6,7 @@
       >Back</nuxt-link
     >
     <div
-      class="grid grid-cols-1 gap-0 lg:grid-cols-4 gap-10 md:grid-cols-3 gap-10 sm:grid-cols-1 gap-5"
+      class="grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-10 md:grid-cols-3 md:gap-5 sm:grid-cols-1"
     >
       <div class="mt-20 lg:col-span-2">
         <center>
@@ -17,7 +17,7 @@
           />
         </center>
       </div>
-      <div class="mt-20 lg:col-span-2 mr-40 md:col-span-2 mr-5">
+      <div class="mt-20 lg:col-span-2 lg:mr-40 md:col-span-2 md:mr-20">
         <h1 class="font-bold text-6xl">{{ results.title }}</h1>
         <p class="mt-10 text-xl">
           Release Date: <strong> {{ results.release_date }} </strong>

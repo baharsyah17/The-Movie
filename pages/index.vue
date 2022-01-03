@@ -1,11 +1,11 @@
 <template>
   <div class="bg-black">
-    <div class="lg:px-20 py-10 md:px-10 py-5">
+    <div class="px-5 py-10 lg:px-20 md:px-10">
       <h1 class="text-center text-3xl font-bold text-white mb-10">
         Now on Cinema
       </h1>
       <div
-        class="grid grid-cols-1 cursor-pointer lg:grid-cols-4 gap-10 px-20 md:grid-cols-3 gap-10 sm:grid-cols-2 gap-5"
+        class="grid grid-cols-1 cursor-pointer lg:grid-cols-4 lg:gap-10 md:grid-cols-3 md:gap-10 sm:grid-cols-2 sm:gap-5"
       >
         <Movie
           v-for="(movie, id) in results"
