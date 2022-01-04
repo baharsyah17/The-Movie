@@ -1,12 +1,14 @@
 <template>
-  <div class="w-screen place-items-center p-20">
-    <nuxt-link
-      to="/"
-      class="bg-indigo-400 text-white text-center rounded-lg px-16 py-3 cursor-pointer"
-      >Back</nuxt-link
-    >
+  <div class="w-screen place-items-center py-10 lg:px-20 md:px-15">
+    <div class="px-2 lg:px-14 md:px-10">
+      <nuxt-link
+        to="/"
+        class="bg-indigo-400 text-white text-center rounded-lg px-16 py-3 cursor-pointer"
+        >Back</nuxt-link
+      >
+    </div>
     <div
-      class="grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-10 md:grid-cols-3 md:gap-5 sm:grid-cols-1"
+      class="grid grid-cols-1 px-2 lg:grid-cols-4 lg:px-14 lg:gap-10 md:grid-cols-3 md:gap-5 md:px-10 sm:grid-cols-1"
     >
       <div class="mt-20 lg:col-span-2">
         <center>
@@ -17,8 +19,12 @@
           />
         </center>
       </div>
-      <div class="mt-20 lg:col-span-2 lg:mr-40 md:col-span-2 md:mr-20">
-        <h1 class="font-bold text-6xl">{{ results.title }}</h1>
+      <div
+        class="mt-10 lg:col-span-2 lg:mt-20 lg:mr-40 md:col-span-2 md:mt-20 md:mr-20"
+      >
+        <h1 class="font-bold text-2xl lg:text-6xl md:text-4xl">
+          {{ results.title }}
+        </h1>
         <p class="mt-10 text-xl">
           Release Date: <strong> {{ results.release_date }} </strong>
         </p>

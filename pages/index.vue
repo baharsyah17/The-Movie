@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black">
-    <div class="px-5 py-10 lg:px-20 md:px-10">
+    <div class="px-4 py-10 lg:px-20 md:px-10">
       <h1 class="text-center text-3xl font-bold text-white mb-10">
         Now on Cinema
       </h1>
