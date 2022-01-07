@@ -31,7 +31,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
   ],
-  router: { base: "/tes-deploy/" },
+  router: { base: "/The-Movie/" },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
